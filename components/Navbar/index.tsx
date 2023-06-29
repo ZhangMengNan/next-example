@@ -34,7 +34,7 @@ const Navbar: NextPage = () => {
       <section className={styles.operationArea}>
         <Button onClick={handleGotoEditorPage}>写文章</Button>
         <Button type="primary" onClick={handleLogin}>
-          登陆
+          登录
         </Button>
       </section>
       <Login isShow={isShowLogin} onClose={handleClose} />

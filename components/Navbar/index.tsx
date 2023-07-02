@@ -1,23 +1,59 @@
-import { useState } from 'react';
+import { HomeOutlined, LoginOutlined } from '@ant-design/icons';
+import { Avatar, Button, Dropdown, Menu } from 'antd';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Button } from 'antd';
+import { useState } from 'react';
 
+import request from '@/service/index';
+import { useStore } from '@/store/index';
 import Login from '../Login';
 import { navs } from './config';
 
+import type { MenuProps } from 'antd';
 import type { NextPage } from 'next';
 import styles from './index.module.scss';
 
 const Navbar: NextPage = () => {
-  const { pathname } = useRouter();
+  const store = useStore();
+  const { id: userId, avatar } = store.user.userInfo;
+  const { pathname, push } = useRouter();
   const [isShowLogin, setIsShowLogin] = useState(false);
+  console.log('store.user.userInfo', store.user.userInfo);
 
   const handleGotoEditorPage = () => {};
 
   const handleLogin = () => setIsShowLogin(true);
 
   const handleClose = () => setIsShowLogin(false);
+
+  const handleGotoPersonalPage = () => push(`/user/${userId}`);
+
+  const handleLogout = () => {
+    request.post('/api/user/logout').then((res: any) => {
+      if (res?.code === 0) store.user.setUserInfo({});
+    });
+  };
+
+  const items: MenuProps['items'] = [
+    {
+      key: '1',
+      label: (
+        <Menu.Item onClick={handleGotoPersonalPage}>
+          <HomeOutlined />
+          &nbsp; 个人主页
+        </Menu.Item>
+      ),
+    },
+    {
+      key: '2',
+      label: (
+        <Menu.Item onClick={handleLogout}>
+          <LoginOutlined />
+          &nbsp; 退出系统
+        </Menu.Item>
+      ),
+    },
+  ];
 
   return (
     <div className={styles.navbar}>
@@ -33,9 +69,17 @@ const Navbar: NextPage = () => {
       </section>
       <section className={styles.operationArea}>
         <Button onClick={handleGotoEditorPage}>写文章</Button>
-        <Button type="primary" onClick={handleLogin}>
-          登录
-        </Button>
+        {userId ? (
+          <>
+            <Dropdown menu={{ items }} placement="bottomLeft">
+              <Avatar src={avatar} size={32} />
+            </Dropdown>
+          </>
+        ) : (
+          <Button type="primary" onClick={handleLogin}>
+            登录
+          </Button>
+        )}
       </section>
       <Login isShow={isShowLogin} onClose={handleClose} />
     </div>

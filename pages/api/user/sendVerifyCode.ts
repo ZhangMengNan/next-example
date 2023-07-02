@@ -35,11 +35,10 @@ async function sendVerifyCode(req: NextApiRequest, res: NextApiResponse) {
     { headers: { Authorization } }
   );
   const { statusCode, templateSMS, statusMsg } = response as any;
-   // console.log(verifyCode)
 
   if (statusCode === '000000') {
     session.verifyCode = verifyCode;
-    await session.save();
+    await session.save(); // 保存
     
     res.status(200).json({
       code: 0,

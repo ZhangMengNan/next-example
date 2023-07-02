@@ -1,17 +1,21 @@
-import { FC,useState,ChangeEvent } from 'react';
-import { message } from 'antd'
+import { message } from 'antd';
+import { ChangeEvent,FC,useState } from 'react';
 
-import CountDown from '../CountDown'
-import request from '@/service/index'
+import request from '@/service/index';
+import { useStore } from '@/store/index';
 
-import styles from './index.module.scss'
+
+import CountDown from '../CountDown';
+
+import styles from './index.module.scss';
 
 interface Props {
   isShow: boolean
   onClose: () => void
 }
 
-const Login: FC<Props> = ({ isShow = false, onClose }) => {
+const Login: FC<Props> = ({ isShow = false,onClose }) => {
+  const store = useStore();
   const [form,setForm] = useState({ phone: '',verify: '' })
   const [isShowVerifyCode,setIsShowVerifyCode] = useState(false)
 
@@ -39,8 +43,11 @@ const Login: FC<Props> = ({ isShow = false, onClose }) => {
   const handleLogin = () => { 
     request.post<any>('/api/user/login', { ...form })
       .then((res) => {
-        if (res?.code === 0) onClose()
-        else message.error(res?.msg || '未知错误')
+        if (res.code === 0) {
+          console.log('res',res)
+          store.user.setUserInfo(res.data);
+          onClose();
+        } else message.error(res.msg || '未知错误');
     })
   }
 
@@ -54,7 +61,7 @@ const Login: FC<Props> = ({ isShow = false, onClose }) => {
       </div>
       <input name='phone' type="text" placeholder='请输入手机号' value={form.phone} onChange={handleFormChange} />
       <div className={styles.verifyCodeArea}>
-        <input name='verify' type="text" placeholder='请输入验证码' value={form.verify} />
+        <input name='verify' type="text" placeholder='请输入验证码' value={form.verify} onChange={handleFormChange} />
         <span className={styles.verifyCode} onClick={handleGetVerifyCode}>{isShowVerifyCode ? <CountDown time={10} onEnd={() => setIsShowVerifyCode(false)} /> : '获取验证码'}</span>
       </div>
       <div className={styles.loginBtn} onClick={handleLogin}>登录</div>

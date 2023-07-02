@@ -7,7 +7,7 @@ interface Props {
     onEnd: () => void
 }
 
-const CountDown: FC<Props> = ({ time,onEnd }) => {
+const CountDown: FC<Props> = ({ time, onEnd }) => {
     const timer = useRef<NodeJS.Timer | null>(null)
     const [count, setCount] = useState(time ?? 60)
 

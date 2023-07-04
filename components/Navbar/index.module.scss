@@ -1,4 +1,4 @@
-.navbar{
+.navbar {
     height: 60px;
     background-color: #fff;
     border-bottom: 1px solid #f1f1f1;
@@ -13,16 +13,16 @@
     }
 
     .linkArea {
-       a {
-        font-size: 18px;
-        padding: 0 20px;
-        text-decoration: none;
-        color: #515767;
-       }
+        a {
+            font-size: 18px;
+            padding: 0 20px;
+            text-decoration: none;
+            color: #515767;
+        }
 
-       .active {
-        color: #1e80ff;
-       }
+        .active {
+            color: #1e80ff;
+        }
     }
 
     .operationArea {

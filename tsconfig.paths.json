@@ -2,24 +2,12 @@
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
-            "@/components/*": [
-                "./components/*"
-            ],
-            "@/service/*": [
-                "./service/*"
-            ],
-            "@/pages/*": [
-                "./pages/*"
-            ],
-            "@/config/*": [
-                "./config/*"
-            ],
-            "@/utils/*": [
-                "./utils/*"
-            ],
-            "@/store/*": [
-                "./store/*"
-            ],
+            "@/components/*": ["./components/*"],
+            "@/service/*": ["./service/*"],
+            "@/pages/*": ["./pages/*"],
+            "@/config/*": ["./config/*"],
+            "@/utils/*": ["./utils/*"],
+            "@/store/*": ["./store/*"]
         }
     }
 }

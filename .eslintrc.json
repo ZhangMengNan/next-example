@@ -1,9 +1,87 @@
 {
-  "extends": ["next/core-web-vitals", "eslint:recommended"],
-  "globals": {
-    "NodeJS": true
-  },
-  "rules": {
-    "no-unused-vars": 0
-  }
+    "root": true,
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "globals": {
+        "NodeJS": true
+    },
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6": true
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        },
+        "import/resolver": {
+            "node": {
+                "extensions": [".ts", ".tsx"]
+            }
+        }
+    },
+    "plugins": ["@typescript-eslint"],
+    "extends": [
+        "next/core-web-vitals",
+        "plugin:@typescript-eslint/recommended",
+        "airbnb",
+        "prettier",
+        "plugin:jsx-a11y/recommended",
+        "plugin:prettier/recommended",
+        "plugin:sonarjs/recommended",
+        "plugin:security/recommended"
+    ],
+    "rules": {
+        "@typescript-eslint/no-unused-vars": ["off"],
+        "@typescript-eslint/no-explicit-any": ["off"],
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [".ts", ".tsx", ".js", ".jsx"]
+            }
+        ],
+        "react/jsx-props-no-spreading": "off",
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "js": "never",
+                "jsx": "never",
+                "ts": "never",
+                "tsx": "never"
+            }
+        ],
+        "jsx-a11y/anchor-is-valid": [
+            "error",
+            {
+                "components": ["Link"],
+                "specialLink": ["hrefLeft", "hrefRight"],
+                "aspects": ["invalidHref", "preferButton"]
+            }
+        ],
+        "no-nested-ternary": "off",
+        "import/prefer-default-export": "off",
+        "react/function-component-definition": [
+            2,
+            {
+                "namedComponents": "arrow-function",
+                "unnamedComponents": "arrow-function"
+            }
+        ],
+        "no-unused-expressions": "off",
+        "@typescript-eslint/no-unused-expressions": "off",
+        "jsx-a11y/click-events-have-key-events": "off",
+        "jsx-a11y/no-static-element-interactions": "off",
+        "@typescript-eslint/no-empty-function": "off",
+        "import/no-extraneous-dependencies": "off",
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-var-requires": "off",
+        "no-param-reassign": "off"
+    }
 }

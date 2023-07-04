@@ -9,82 +9,81 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  
+
     .loginBox {
-      width: 320px;
-      height: 320px;
-      background-color: #fff;
-      padding: 20px;
-  
-      input {
-        width: 100%;
-        height: 40px;
-        margin-bottom: 10px;
-        padding: 10px;
-        border-radius: 5px;
-        border: 1px solid #888;
-        outline: none;
-        box-sizing: border-box;
-      }
-  
-      input:focus {
-        border: 1px solid #1e80ff;
-      }
-  
-      .verifyCodeArea {
-        position: relative;
-        cursor: pointer;
-  
-        .verifyCode {
-          color: #1e80ff;
-          position: absolute;
-          right: 20px;
-          top: 10px;
-          font-size: 14px;
+        width: 320px;
+        height: 320px;
+        background-color: #fff;
+        padding: 20px;
+
+        input {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #888;
+            outline: none;
+            box-sizing: border-box;
         }
-      }
+
+        input:focus {
+            border: 1px solid #1e80ff;
+        }
+
+        .verifyCodeArea {
+            position: relative;
+            cursor: pointer;
+
+            .verifyCode {
+                color: #1e80ff;
+                position: absolute;
+                right: 20px;
+                top: 10px;
+                font-size: 14px;
+            }
+        }
     }
-  
+
     .loginTitle {
-      font-size: 20px;
-      font-weight: bold;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-  
-      .close {
-        color: #888;
-        cursor: pointer;
-      }
+        font-size: 20px;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+
+        .close {
+            color: #888;
+            cursor: pointer;
+        }
     }
-  
+
     .loginBtn {
-      height: 40px;
-      line-height: 40px;
-      border-radius: 5px;
-      margin-top: 15px;
-      background-color: #007fff;
-      color: #fff;
-      text-align: center;
-      cursor: pointer;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 5px;
+        margin-top: 15px;
+        background-color: #007fff;
+        color: #fff;
+        text-align: center;
+        cursor: pointer;
     }
-  
+
     .otherLogin {
-      margin-top: 15px;
-      font-size: 14px;
-      color: #1e80ff;
-      cursor: pointer;
-    }
-  
-    .loginPrivacy {
-      margin-top: 10px;
-      color: #333;
-      font-size: 14px;
-  
-      a {
+        margin-top: 15px;
+        font-size: 14px;
         color: #1e80ff;
-      }
+        cursor: pointer;
     }
-  }
-  
+
+    .loginPrivacy {
+        margin-top: 10px;
+        color: #333;
+        font-size: 14px;
+
+        a {
+            color: #1e80ff;
+        }
+    }
+}

@@ -82,6 +82,8 @@
         "import/no-extraneous-dependencies": "off",
         "no-unused-vars": "off",
         "@typescript-eslint/no-var-requires": "off",
-        "no-param-reassign": "off"
+        "no-param-reassign": "off",
+        "no-return-await": "off",
+        "camelcase": "off"
     }
 }
